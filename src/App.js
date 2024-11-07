@@ -1,12 +1,12 @@
-
+// Importa el archivo de estilos y el componente FirstScreen
 import './App.css';
+import FirstScreen from './screens/firstscreen';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>Hola mundo</p>
-      </header>
+      {/* Renderiza el componente FirstScreen */}
+      <FirstScreen />
     </div>
   );
 }
