@@ -1,117 +1,206 @@
-/* Estructura general */
-.search-page {
-    font-family: Arial, sans-serif;
-    color: #333;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
   
+  body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+  }
+  
+  /* Main container */
+  .first-screen-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Header styles */
   .header {
-    position: relative;
+    background-color: #333;
+    color: #fff;
+    padding: 15px 0;
   }
   
-  .header-image {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-  }
-  
-  .header-text {
-    position: absolute;
-    top: 20%;
-    left: 10%;
-    color: white;
-    font-size: 2.5rem;
-    font-weight: bold;
-  }
-  
-  .search-section {
-    padding: 20px;
-    background-color: #f5f5f5;
-    text-align: center;
-  }
-  
-  .search-tabs {
+  .navbar {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 15px;
   }
   
-  .tab {
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    background: none;
-    font-size: 1rem;
-  }
-  
-  .tab.active {
-    border-bottom: 2px solid #6a0dad;
-  }
-  
-  .search-form {
+  .navbar ul {
+    list-style-type: none;
     display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
   }
   
-  .dropdown, .zip-input, .search-button {
-    padding: 10px;
-    font-size: 1rem;
-    border-radius: 4px;
-    border: 1px solid #ddd;
+  .navbar li {
+    margin: 0 15px;
   }
   
-  .search-button {
-    background-color: #6a0dad;
-    color: white;
-    cursor: pointer;
-    border: none;
-    font-weight: bold;
-  }
-  
-  .advanced-search {
-    display: inline-block;
-    margin-top: 10px;
-    color: #6a0dad;
+  .navbar .nav-link {
+    color: #fff;
     text-decoration: none;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
   }
   
-  .categories {
-    padding: 20px;
+  .navbar .nav-link:hover {
+    color: #f39c12;
   }
   
-  .category-buttons {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
+  /* Hero section */
+  .hero-section {
+    background-color: #34495e;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+  }
+  
+  .hero-section h1 {
+    font-size: 2.5rem;
     margin-bottom: 20px;
   }
   
-  .category-button {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: white;
-    cursor: pointer;
+  .hero-section p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
   }
   
-  .category-button.active {
-    background-color: #6a0dad;
-    color: white;
-  }
-  
+  /* Car gallery section */
   .car-gallery {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
+    padding: 40px 20px;
+    text-align: center;
   }
   
-  .car-gallery img {
-    width: 150px;
-    height: auto;
-    border-radius: 4px;
+  .car-gallery h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+  
+  .car-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .car-card {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .car-card:hover {
+    transform: translateY(-10px);
+  }
+  
+  .car-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .car-card h3 {
+    font-size: 1.5rem;
+    margin: 15px;
+  }
+  
+  .car-card .price {
+    font-size: 1.2rem;
+    color: #27ae60;
+    margin-bottom: 15px;
+  }
+  
+  .car-card .buy-button {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    width: 100%;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .car-card .buy-button:hover {
+    background-color: #e67e22;
+  }
+  
+  /* Footer styles */
+  .footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-section h1 {
+      font-size: 2rem;
+    }
+  
+    .car-gallery h2 {
+      font-size: 1.5rem;
+    }
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: flex-end;  /* Alinea el contenido a la derecha */
+    margin: 20px 0;
+  }
+  
+  .search-input {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .search-button {
+    padding: 10px 15px;
+    font-size: 16px;
+    background-color: #004aad;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
+  .search-button:hover {
+    background-color: #003b8d;
+  }
+  
+  /* Estilos para el botón flotante */
+  .scroll-to-top {
+    position: fixed;
+    bottom: 20px;  /* A 20px desde la parte inferior de la pantalla */
+    right: 20px;   /* A 20px desde la parte derecha de la pantalla */
+    padding: 10px 15px;
+    font-size: 18px;
+    background-color: #004aad;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none; /* Inicialmente no visible */
+    z-index: 1000;  /* Asegura que el botón esté encima de otros elementos */
+  }
+  
+  .scroll-to-top:hover {
+    background-color: #003b8d;
+  }
+  
+  /* Mostrar el botón cuando el usuario haya hecho scroll hacia abajo */
+  .scroll-to-top.show {
+    display: block;
   }
   

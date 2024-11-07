@@ -1,97 +1,126 @@
-import React from 'react';
-import './firstscreen.css';
+import React, { useState, useEffect } from 'react';
+import './firstscreen.css';  // Asegúrate de importar el archivo CSS
 
 function FirstScreen() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Función para hacer scroll hacia arriba
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  // Función para mostrar el botón al hacer scroll
+  const handleScroll = () => {
+    if (window.scrollY > 300) {
+      setIsVisible(true);  // Muestra el botón si se ha desplazado más de 300px
+    } else {
+      setIsVisible(false); // Oculta el botón si no
+    }
+  };
+
+  // Usar useEffect para escuchar el scroll
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="search-page">
-      {/* Encabezado con imagen y texto */}
-      <header className="header">
-        <img
-          src="https://path/to/your/car-image.jpg"
-          alt="Car Banner"
-          className="header-image"
-        />
-        <div className="header-text">
-          <h1>Imagine the possibilities</h1>
-        </div>
+    <div className="first-screen-container">
+      {/* Aquí va el resto de tu contenido */}
+      <header>
+        {/* Aquí va tu encabezado y contenido */}
       </header>
-
-      {/* Sección de búsqueda */}
-      <section className="search-section">
-        <div className="search-tabs">
-          <button className="tab active">Make</button>
-          <button className="tab">Body style</button>
-          <button className="tab">Electric</button>
-        </div>
-
-        <div className="search-form">
-          <select className="dropdown">
-            <option>New/Used</option>
-            <option>New</option>
-            <option>Used</option>
-          </select>
-
-          <select className="dropdown">
-            <option>Make</option>
-            <option>Kia</option>
-            <option>Toyota</option>
-            <option>Honda</option>
-          </select>
-
-          <select className="dropdown">
-            <option>Model</option>
-            <option>Telluride</option>
-            <option>Sorento</option>
-            <option>Optima</option>
-          </select>
-
-          <select className="dropdown">
-            <option>Price</option>
-            <option>No max price</option>
-            <option>$20,000</option>
-            <option>$50,000</option>
-          </select>
-
-          <select className="dropdown">
-            <option>Distance</option>
-            <option>20 miles</option>
-            <option>50 miles</option>
-            <option>100 miles</option>
-          </select>
-
-          <input type="text" placeholder="ZIP" className="zip-input" />
-
-          <button className="search-button">Search</button>
-        </div>
-        <a href="#" className="advanced-search">Advanced search</a>
+      
+      <section className="hero-section" aria-label="Sección principal para venta de autos">
+        <h1>Encuentra tu Auto Ideal</h1>
+        <p>Explora nuestra amplia selección de autos y encuentra el que más te guste.</p>
       </section>
 
-      {/* Categorías populares */}
-      <section className="categories">
-        <h2>Popular categories</h2>
-        <div className="category-buttons">
-          <button className="category-button active">Electric</button>
-          <button className="category-button">SUV</button>
-          <button className="category-button">Sedan</button>
-          <button className="category-button">Pickup Truck</button>
-          <button className="category-button">Luxury</button>
-          <button className="category-button">Crossover</button>
-          <button className="category-button">Hybrid</button>
-          <button className="category-button">Diesel</button>
-          <button className="category-button">Coupe</button>
-          <button className="category-button">Hatchback</button>
-          <button className="category-button">Wagon</button>
-          <button className="category-button">Convertible</button>
-        </div>
-        {/* Agregar imágenes de autos */}
-        <div className="car-gallery">
-          <img src="https://path/to/car1.jpg" alt="Car 1" />
-          <img src="https://path/to/car2.jpg" alt="Car 2" />
-          <img src="https://path/to/car3.jpg" alt="Car 3" />
+      {/* Apartado 1 */}
+      <section className="search-container">
+        <input 
+          type="text" 
+          className="search-input" 
+          placeholder="Buscar autos..." 
+          aria-label="Buscar autos"
+        />
+        <button className="search-button">Buscar</button>
+      </section>
+
+      <section id="autos" className="car-gallery">
+        <h2>Nuestros Autos Destacados</h2>
+        <div className="car-cards">
+          <div className="car-card" role="article">
+            <img src="/camaro.jpeg" alt="Auto sedán modelo 2023" className="car-image"/>
+            <h3>Sedán 2023</h3>
+            <p className="price">$25,000</p>
+            <button className="buy-button">Comprar Ahora</button>
+          </div>
+          <div className="car-card" role="article">
+            <img src="/camaro.jpeg" alt="Auto SUV modelo 2023" className="car-image"/>
+            <h3>SUV 2023</h3>
+            <p className="price">$35,000</p>
+            <button className="buy-button">Comprar Ahora</button>
+          </div>
         </div>
       </section>
+
+      {/* Apartado 2 */}
+      <section id="autos" className="car-gallery">
+        <h2>Recientes Agregados</h2>
+        <div className="car-cards">
+          <div className="car-card" role="article">
+            <img src="/camaro.jpeg" alt="Auto sedán modelo 2023" className="car-image"/>
+            <h3>Sedán 2023</h3>
+            <p className="price">$25,000</p>
+            <button className="buy-button">Comprar Ahora</button>
+          </div>
+          <div className="car-card" role="article">
+            <img src="/camaro.jpeg" alt="Auto SUV modelo 2023" className="car-image"/>
+            <h3>SUV 2023</h3>
+            <p className="price">$35,000</p>
+            <button className="buy-button">Comprar Ahora</button>
+          </div>
+        </div>
+      </section>
+
+      {/* Apartado 3 */}
+      <section id="autos" className="car-gallery">
+        <h2>Nuestros Deportivos</h2>
+        <div className="car-cards">
+          <div className="car-card" role="article">
+            <img src="/camaro.jpeg" alt="Auto sedán modelo 2023" className="car-image"/>
+            <h3>Sedán 2023</h3>
+            <p className="price">$25,000</p>
+            <button className="buy-button">Comprar Ahora</button>
+          </div>
+          <div className="car-card" role="article">
+            <img src="/camaro.jpeg" alt="Auto SUV modelo 2023" className="car-image"/>
+            <h3>SUV 2023</h3>
+            <p className="price">$35,000</p>
+            <button className="buy-button">Comprar Ahora</button>
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <p>© 2024 CarSales. Todos los derechos reservados.</p>
+      </footer>
+
+      {/* Botón flotante */}
+      <button
+        className={`scroll-to-top ${isVisible ? 'show' : ''}`}
+        onClick={scrollToTop}
+      >
+        ↑
+      </button>
     </div>
   );
 }
 
-export default FirstScreen;
+export default FirstScreen;  {/* Exportar correctamente el componente */}
